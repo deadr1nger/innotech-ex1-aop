@@ -22,10 +22,10 @@ public class ExecutionTimeAspect {
     private final AsyncTrackTimeService service;
 
     @Pointcut("@annotation(ru.innotech.t1.annotation.TrackTime)")
-    public void logExecutionTimeJoinPoint() {
+    public void logExecutionTimePointCut() {
     }
 
-    @Around("@annotation(ru.innotech.t1.annotation.TrackTime)")
+    @Around("logExecutionTimePointCut()")
     public void logExecutionTime(ProceedingJoinPoint joinPoint) throws Throwable {
         try {
             long startTime = System.currentTimeMillis();

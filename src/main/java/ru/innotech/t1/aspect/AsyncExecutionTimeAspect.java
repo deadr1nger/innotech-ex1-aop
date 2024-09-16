@@ -23,10 +23,10 @@ public class AsyncExecutionTimeAspect {
     private final AsyncTrackTimeService service;
 
     @Pointcut("@annotation(ru.innotech.t1.annotation.TrackAsyncTime)")
-    public void logExecutionTimeJoinPoint() {
+    public void logExecutionTimePointCut() {
     }
 
-    @Around("@annotation(ru.innotech.t1.annotation.TrackAsyncTime)")
+    @Around("logExecutionTimePointCut()")
     public Object logExecutionTime(ProceedingJoinPoint joinPoint) {
         return CompletableFuture.runAsync(() -> {
             long startTime = System.currentTimeMillis();

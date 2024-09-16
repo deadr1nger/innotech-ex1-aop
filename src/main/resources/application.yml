@@ -1,0 +1,27 @@
+spring:
+  application:
+    name: "less1"
+  r2dbc:
+    show-sql: true
+    url: r2dbc:postgresql://localhost:5432/innotech
+    username: postgres
+    password: 1234
+    pool:
+      enabled: true
+
+  flyway:
+    url: jdbc:postgresql://localhost:5432/innotech
+    user: postgres
+    password: 1234
+    enabled: true
+    locations: classpath:migration
+
+logging:
+  level:
+    root: info
+    org:
+      hibernate:
+        type: info
+      springframework:
+        data:
+          r2dbc: debug
